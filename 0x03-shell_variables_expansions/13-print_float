@@ -1,2 +1,2 @@
 #!/bin/bash
-NUM="11.21 \n"
+echo "$(($NUM.00))"
