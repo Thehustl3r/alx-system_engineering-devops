@@ -1,2 +1,3 @@
 #!/bin/bash
-+ "//action"
+Next=/action
+$Next
