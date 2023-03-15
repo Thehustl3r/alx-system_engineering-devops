@@ -1,2 +1,2 @@
 #!/bin/bash
-NEXT=/action; echo $PATH $NEXT
+echo "$PATH/action"
