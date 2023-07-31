@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# For each process, print the PID and the process name
+processes=$(pgrep -a bash)
+
+# For each process, print the PID and the process name
+for process in $processes; do
+  echo "${process:5}"
+done
