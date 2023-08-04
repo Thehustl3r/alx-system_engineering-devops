@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#the program will be used listen to the open port
+
+sockets=$(lsof -i -n | grep LISTEN)
+
+# Print the header
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+
+# Loop through the list of sockets
+for socket in $sockets; do
+
+  # Print the socket information
+  echo "$socket"
+done
+
+# Print the header for the UNIX domain sockets
+echo ""
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+
+# Get the list of UNIX domain sockets
+sockets=$(lsof -i -n | grep LISTEN | grep unix)
+
+# Loop through the list of sockets
+for socket in $sockets; do
+
+  # Print the socket information
+  echo "$socket"
+done
