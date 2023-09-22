@@ -1,3 +1,4 @@
+# this manifest is used to create a new file
 file {'/tmp/school':
   ensure  => 'file',
   mode    => '0744',
