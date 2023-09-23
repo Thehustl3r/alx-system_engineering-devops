@@ -5,7 +5,5 @@ $str = "Host *
 file {'/root/.ssh/config':
   ensure  => file,
   mode    => '0600',
-  owner   => 'root',
-  group   => 'root',
   content => $str,
 }
