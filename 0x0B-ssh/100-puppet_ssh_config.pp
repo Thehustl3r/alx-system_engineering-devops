@@ -1,9 +1,14 @@
 # puppet to creatie a config file of ssh
-$str = "Host *
-   IdentityFile ~/.ssh/school
-   PasswordAuthentication no\n"
-file {'/root/.ssh/config':
-  ensure  => file,
-  mode    => '0600',
-  content => $str,
+include stdlib
+
+file_line { 'disable passwd auth':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => 'PasswordAuthentication no',
+}
+
+file_line { 'create identity file':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => 'IdentityFile ~/.ssh/school'
 }
