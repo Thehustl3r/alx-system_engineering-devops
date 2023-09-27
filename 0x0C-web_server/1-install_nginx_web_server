@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#create a bash script that install ngnx server
+
+sudo apt update
+sudo apt install -y nginx
+
+# check if nginx is still running
+if pgrep -x "nginx" >/dev/null; then
+	echo "Nginx is already running"
+else
+	sudo service nginx start
+fi
+
+echo <!DOCTYPE html><html><body>Hello World!</body></html> | sudo tee /var/www/html/index.html > /dev/null
+
+#checking if nginx is not listenning on port 80
+if sudo netstat -tuln | grep -q ":80"; then
+	echo "nginx is connected on port 80"
+else
+	echo "nginx is not listening to port 80 you need to change it"
+fi
