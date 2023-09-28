@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#create a bash script that install ngnx server
+
+sudo apt-get update && apt-get install -y nginx
+
+#checking if nginx is not listenning on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# crate new error file
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# configure Nginx to use our 404 page
+sed -i "s/error_page 404 \/ 404.html; error_page 500 \/ 500.html;/error_page 404 \/ 404.html;/g" /etc/nginx/conf.d/default.conf
+
+sudo /etc/init.d/nginx restart
