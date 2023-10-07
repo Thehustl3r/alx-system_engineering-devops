@@ -1,0 +1,4 @@
+  File "./0-nginx_likes_port_80", line 3
+    sudo apt-get update && sudo apt-get install nginx -y
+         ^
+SyntaxError: invalid syntax

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# module that deals with fixing ngnx debugging
+sudo apt-get update && sudo apt-get install nginx -y
+sudo service nginx start
