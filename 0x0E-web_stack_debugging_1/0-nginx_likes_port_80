@@ -4,7 +4,7 @@ sudo apt-get update && sudo apt-get install nginx -y
 sudo service nginx start
 
 # configure to listen on port 80
-echo "
+cat <<EOL | sudo tee /etc/nginx/sites-available/default
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -15,10 +15,10 @@ server {
 	index index.html index.htm index.nginx-debian.html;
 
 	location / {
-		try_files $uri $uri/ =404;
+		try_files \$uri \$uri/ =404;
 	}
 }
-" | tee /etc/nginx/sites-available/default
+EOL
 
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 nginx -t
