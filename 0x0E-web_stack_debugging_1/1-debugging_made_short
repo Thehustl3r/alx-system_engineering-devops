@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# module that deals with fixing ngnx debugging
+cp -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx stop
