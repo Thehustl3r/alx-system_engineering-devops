@@ -2,3 +2,24 @@
 # module that deals with fixing ngnx debugging
 sudo apt-get update && sudo apt-get install nginx -y
 sudo service nginx start
+
+# configure to listen on port 80
+echo "
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name _;
+	
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+" | tee /etc/nginx/sites-available/default
+
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+nginx -t
+sudo service nginx restart
