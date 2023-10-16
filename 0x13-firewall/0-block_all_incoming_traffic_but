@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # install and configure firewall
-
-sudo apt install -y ufw
-sudo ufw default deny incoming
-sudo ufw allow ssh
-sudo ufw allow https
-sudo ufw allow http
-sudo ufw enable
+sudo apt-get install -y ufw
+ufw default deny incoming
+ufw allow 22/tcp
+ufw allow 443/tcp
+ufw allow 80/tcp
+ufw enable
