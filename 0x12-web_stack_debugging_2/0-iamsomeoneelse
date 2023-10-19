@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# In this script we will display the user if it exists
+
+user=$2
+whoami $user
