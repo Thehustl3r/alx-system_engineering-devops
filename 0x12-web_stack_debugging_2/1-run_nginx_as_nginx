@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 # the script that will recofingure the nginx
-
-# Stop nginx service
-sudo service nginx stop
-
-# configure the nginx to use nginx user
-sudo sed -i 's/user\s*nginx;/user nginx;/' /etc/nginx/nginx.conf
-
-# configure to listen on port 8080
-sudo sed -i 's/listen\s*80;/listen 8080;/' /etc/nginx/sites-available/default
-
-sudo service nginx start
+pkill apache2
+chown nginx /etc/nginx/nginx.conf
+chmod u+r /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+sudo -u nginx service nginx restart
