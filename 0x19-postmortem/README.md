@@ -1,0 +1,2 @@
+0x19. Postmortem
+in this project we hill be working to debug the issue and the after write a postmortem documentation of how we have come up the solution. by well analysing the cause of the problem and the measures we must take
