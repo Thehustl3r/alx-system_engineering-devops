@@ -11,7 +11,7 @@ if [ -z "$master_pid" ]; then
 fi
 
 # Send HUP signal to the master process
-kill -HUP $master_pid
+kill -HUP "$master_pid"
 
 while true; do
         new_master_pid=$(pgrep gunicorn)
