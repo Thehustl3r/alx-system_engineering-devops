@@ -26,6 +26,11 @@ server {
 
         }
 
+        location /web_dynamic/static/ {
+                alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static/;
+        }
+
+
 
         error_log /var/log/nginx/airbnb-onepage_error.log;
         access_log /var/log/nginx/airbnb-onepage_access.log;
