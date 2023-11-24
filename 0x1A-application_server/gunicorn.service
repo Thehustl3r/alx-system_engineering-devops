@@ -4,7 +4,10 @@
 Description=Gunicorn service for AirBnb clone
 
 [Service]
-ExecStart=/usr/bin/gunicorn -b 0.0.0.0:5003 -W 3 -t 60 --error-logfile=/tmp/airbnb-access.log web_dynamic.2-hbnb:app
+ExecStart=/usr/bin/gunicorn -b 0.0.0.0:5003 -W 3 \
+--log-file=/tmp/airbnb-error.log \
+--access-log-file=/tmp/airbnb-access.log \
+web_dynamic.2-hbnb:app
 Restart=always
 User=ubuntu
 Group=ubuntu
