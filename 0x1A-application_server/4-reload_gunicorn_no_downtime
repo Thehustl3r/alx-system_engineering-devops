@@ -2,7 +2,7 @@
 # within this script safely reload gunicorn a webserver without causing a downtime
 
 # Get the master PID of gunicorn
-master_pid=$(ps -ef | grep "gunicorn: master process" | awk '{print $2}')
+master_pid=$(pgrep gunicorn)
 
 # check if the master PID exists 
 if [ -z "$master_pid" ]; then
@@ -14,7 +14,7 @@ fi
 kill -HUP $master_pid
 
 while true; do
-        new_master_pid=$(ps -ef | grep 'gunicorn: master process' | awk '{print $2}')
+        new_master_pid=$(pgrep gunicorn)
 
         if [[ "$new_master_pid" != "$master_pid" ]]; then
                 break
