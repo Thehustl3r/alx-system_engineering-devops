@@ -1,24 +1,4 @@
 #!/usr/bin/env bash
 # within this script safely reload gunicorn a webserver without causing a downtime
 
-# Get the master PID of gunicorn
-master_pid=$(pgrep gunicorn)
-
-# check if the master PID exists 
-if [ -z "$master_pid" ]; then
-        echo "No Gunicorn master process"
-        exist 1
-fi
-
-# Send HUP signal to the master process
-kill -HUP "$master_pid"
-
-while true; do
-        new_master_pid=$(pgrep gunicorn)
-
-        if [[ "$new_master_pid" != "$master_pid" ]]; then
-                break
-        fi
-
-        sleep 1
-done
+pgrep gunicorn | xargs kill -HUP
