@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # within this script safely reload gunicorn a webserver without causing a downtime
-
-pgrep gunicorn | xargs kill -HUP
+master_pid=$(pgrep -f "gunicorn: master process")
+kill -HUP "$master_pid"
