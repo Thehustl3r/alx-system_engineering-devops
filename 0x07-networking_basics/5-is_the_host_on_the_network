@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# the program that ping the given argument
+
+ping $1
