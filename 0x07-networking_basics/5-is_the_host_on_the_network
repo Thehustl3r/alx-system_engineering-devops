@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # the program that ping the given argument
 
-ping $1
+#check if there is argument
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 {IP_ADDRESS}"
+    exit 1
+fi
+ping -c 5 $1
