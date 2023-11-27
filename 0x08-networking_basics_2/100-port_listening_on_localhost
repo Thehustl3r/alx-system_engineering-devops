@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This program tends to coonect to port 98
+
+nc -l -p 98
